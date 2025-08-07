@@ -10,15 +10,16 @@ In home surveillance or research setups with a fixed camera, most footage consis
 ## Technical details
 ### [SparseMotionCapture.py](SparseMotionCapture.py):
 - Captures video at max 5 frames per second (fps).
-- Periodically saves key frames (Full frames)
-- Compares each new frame to the most recent key frame to detect motion.
-- Saves only the detected (changing) pixels as sparse matrices (BSR format) in compressed .npz files.
-- Runs in real-time during video capture.
-- Ideal for experimental setups or surveillance cameras with a static background and fixed camera.
+- Periodically saves full key frames for reference 
+- **Detects motion** by comparing each new frame to the latest key frame using **frame differencing, thresholding,** and **morphological operations** (erosion, dilation).
+- Saves only the **detected motion** regions as sparse matrices (BSR format) compressed in.npz files.
+- Dynamically manages frame capture rate based on **queue size** to avoid overload and frame drops.
+- **Processes and batch-saves frames in real-time** during video capture.
+- Designed for experimental setups or surveillance cameras with a static background and fixed camera.
 
 ### [NpzToMp4.py](NpzToMp4.py):
-- Converts the compressed .npz files back into .mp4 videos for viewing and analysis.
-- .mp4 files are larger in size. For long-term storage, keep data in .npz format. Use .mp4 only for temporary playback or review.
+- Converts the compressed .npz files back into .mp4 videos for playback and analysis.
+- Resulting .mp4 files are larger in size. For long-term storage, keeping data in .npz format is recommended. Use .mp4 primarily for temporary playback or review.
 
 ### License
 [MIT License](LICENSE)
