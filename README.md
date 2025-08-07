@@ -5,7 +5,11 @@ A real-time video capture tool that stores only moving pixels in sparse matrix f
 - Works with **Picam2 camera** on [**Raspberry Pi**](https://www.raspberrypi.com/) computers.
 
 ## Summary
-In home surveillance or research setups with a fixed camera, most footage consists of a static background with occasional movement. This tool saves only the moving parts, enabling storage of hours of footage without wasting space on empty frames. This tool runs live in the backgorund while footage is recorded, so there is no need to manually sort through footage afterwards.
+In research or home surveillance setups  with a fixed camera, most footage consists of a static background with occasional movement. This tool saves only the moving parts, enabling storage of hours of footage without wasting space on empty frames. This tool runs live in the backgorund while footage is recorded, so there is no need to manually sort through footage afterwards. Full key frames are saved periodically, allowing for accurate reconstruction of complete frames—even though most pixels are discarded in the compressed format.
+
+<p align="center">
+  <img src="https://github.com/JulianKempenaers/Sparse-Motion-Capture/blob/main/overlay_demonstration.gif?raw=true" width="700"/>
+</p>
 
 ## Technical details
 ### [SparseMotionCapture.py](SparseMotionCapture.py):
@@ -20,6 +24,12 @@ In home surveillance or research setups with a fixed camera, most footage consis
 ### [NpzToMp4.py](NpzToMp4.py):
 - Converts the compressed .npz files back into .mp4 videos for playback and analysis.
 - Resulting .mp4 files are larger in size. For long-term storage, keeping data in .npz format is recommended. Use .mp4 primarily for temporary playback or review.
+
+
+<p align="center">
+  <img src="https://github.com/JulianKempenaers/Sparse-Motion-Capture/blob/main/side_by_side.gif?raw=true" width="700"/>
+</p>
+
 
 ### License
 [MIT License](LICENSE)
